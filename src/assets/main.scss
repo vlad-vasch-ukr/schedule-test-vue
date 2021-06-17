@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,500&display=swap');
+html {
+  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  margin: 0;
+}
+#app {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+.title {
+  font-size: 3.5rem;
+  color: #ccc;
+  text-transform: uppercase;
+  margin: 0 0 3rem 0;
+}
+.schedule {
+  &__table {
+    font-size: 2rem;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  &__head {
+    td:nth-child(2) ~ td {
+      width: 10.75%;
+      border-right: 1px solid transparent;
+      border-left: 1px solid transparent;
+    }
+  }
+  &__marker {
+    display: block;
+    text-align: left;
+    &:before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 2rem;
+      background-color: #ccc;
+      position: absolute;
+      bottom: -1px;
+      left: -1px;
+    }
+  }
+  &__row {
+    &:not(:first-child) {
+      td {
+        border: 1px solid #ccc;
+      }
+    }
+    td {
+      @-moz-document url-prefix() {
+        background-clip: padding-box;
+      }
+      color: #ccc;
+      padding: 1.5rem 0;
+      user-select: none;
+      position: relative;
+      &:first-child {
+        width: 8%;
+      }
+      &.reserved {
+        background-color: #eae8e8;
+      }
+      &.filled {
+        @extend .reserved;
+        color: #404040;
+      }
+    }
+  }
+  &__subtitle {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  &__all-day {
+    width: 6%;
+    background-color: #404040;
+    cursor: pointer;
+    & ~ td {
+      width: 3.5833333%;
+      cursor: pointer;
+    }
+    &.full:before {
+      content: url("../assets/img/i-circle-check.svg");
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -45%);
+    }
+  }
+  &__btn {
+    min-width: 15rem;
+    font-size: 2rem;
+    color: #ccc;
+    background-color: #404040;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 2.5rem;
+    outline: none;
+    cursor: pointer;
+    transition: background-color .3s ease-in;
+    &:hover {
+      background-color: #5e5e5e;
+    }
+    &:first-child {
+      margin-right: 2rem;
+    }
+    &-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 2rem;
+    }
+  }
+}
