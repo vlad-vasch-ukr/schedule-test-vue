@@ -99,6 +99,7 @@ export default {
         return (item.bt <= (hourIndex - 1) * 60 && hourIndex * 60 <= item.et + 1)
       });
       if (detected) {
+        //actions if the segment is included in the interval
         e.target.classList.remove('reserved');
         if (this.data[day][intervalIndex].bt === (hourIndex - 1) * 60 && hourIndex * 60 === this.data[day][intervalIndex].et + 1) {
           this.data[day].splice(intervalIndex, 1);
@@ -113,6 +114,7 @@ export default {
           this.data[day][intervalIndex].et = (this.data[day][intervalIndex].et - 60);
         }
       } else {
+        //actions if the segment is not included in the interval
         let rightIndex = null;
         let leftIndex = null;
         const right = this.data[day].find((item, index) => {
